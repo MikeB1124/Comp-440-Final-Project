@@ -32,6 +32,16 @@
             </div>
         </nav>
         <!-- End of Nav Bar -->
+
+        <div class="container text-center mt-4">
+            <div class="row">
+                <div class="col">
+                    <button type="button" id="TestButton" class="btn btn-primary">Create 'Test' DB</button>
+                </div>
+            </div>
+        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+        <script src="js/test.js"></script>
     </body>
 </html>
