@@ -20,5 +20,12 @@
 ## Mannge Local MySQL Database
 
 - Make sure the MySQL service is running on your XAMPP Control Panel
-- Visit http://localhost/phpmyadmin/, here you will see your local MySQL database
+- Visit http://localhost:80/phpmyadmin/, here you will see your local MySQL database
 - We will interact with this database through our webpage
+
+## Try out Test Buttons
+
+- When clicking these buttons, Javascript is in charge of listening for the button click event
+- When the click event is captured, we use ajax to send the request to our PHP backend code
+- Our PHP code sends the appropriate SQL command to our phpmyadmin MySQL database
+- You can view your query results in the adming portal http://localhost:80/phpmyadmin/
