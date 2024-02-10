@@ -2,7 +2,7 @@
 
 ## Install XAMPP For Local Server Environment
 
-- Youtube video on how to install XAMP https://www.youtube.com/watch?v=GRqw0pBwewY&t=137s
+- Youtube video on how to install XAMP **(WATCH VIDEO UP TO 5:10 TIMESTAMP)** https://www.youtube.com/watch?v=GRqw0pBwewY&t=137s
 
 ## XAMPP Configuration
 
