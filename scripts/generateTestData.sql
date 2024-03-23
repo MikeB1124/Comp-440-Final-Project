@@ -1,7 +1,7 @@
 use RestaurantDB;
 
 INSERT INTO `Location` (`ID`, `Location_Name`, `Address`, `City`, `Postal_Code`, `State`, `Phone`) VALUES
-(1, 'Main Street', '123 Main St', 'Cityville', 12345, 'CA', '123-456-7890');
+(1, 'Main Street', '123 Main St', 'Cityville', 12345, 'CA', '1234567890');
 
 INSERT INTO `Menu` (`ID`, `Location_ID`, `Menu_Name`, `Description`) VALUES
 (1, 1, 'Main Menu', 'Our delicious main menu options');
