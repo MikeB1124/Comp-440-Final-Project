@@ -56,11 +56,14 @@ CREATE TABLE Customers (
 
 CREATE TABLE Orders (
     order_id INT AUTO_INCREMENT,
-    table_number INT,
+    customer_id INT,
     order_time DATETIME,
     total_amount DECIMAL(10, 2),
     status ENUM('pending', 'completed', 'cancelled'),
-    PRIMARY KEY (order_id)
+    PRIMARY KEY (order_id),
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 CREATE TABLE Order_Items (
