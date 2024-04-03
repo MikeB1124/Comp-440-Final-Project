@@ -46,3 +46,34 @@ CREATE TABLE `Item` (
         ON UPDATE CASCADE
 );
 
+CREATE TABLE Customers (
+    customer_id INT AUTO_INCREMENT,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    phone_number VARCHAR(20),
+    PRIMARY KEY (customer_id)
+);
+
+CREATE TABLE Orders (
+    order_id INT AUTO_INCREMENT,
+    table_number INT,
+    order_time DATETIME,
+    total_amount DECIMAL(10, 2),
+    status ENUM('pending', 'completed', 'cancelled'),
+    PRIMARY KEY (order_id)
+);
+
+CREATE TABLE Order_Items (
+    order_item_id INT AUTO_INCREMENT,
+    order_id INT,
+    menu_id INT,
+    quantity INT,
+    subtotal DECIMAL(10, 2),
+    PRIMARY KEY (order_item_id),
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (menu_id) REFERENCES Menu(ID)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
