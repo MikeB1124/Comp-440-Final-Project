@@ -4,7 +4,7 @@ $username = "root"; // or your MySQL username
 $password = ""; // or your MySQL password
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, "restaurantdb");
 
 // Check connection
 if ($conn->connect_error) {
