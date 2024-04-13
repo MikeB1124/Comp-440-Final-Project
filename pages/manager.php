@@ -37,8 +37,9 @@
                     <option selected>Select Restaurant Location..</option>
                 </select>
             </div>
-            <div class="row mt-4">
-            </div>
+        </div>
+
+        <div class="container text-center menu-container">
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
