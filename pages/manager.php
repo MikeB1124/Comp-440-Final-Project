@@ -36,7 +36,7 @@
                 <select class="form-select select-location" multiple aria-label="Multiple select example">
                     <option selected id="0">Select Restaurant Location..</option>
                 </select>
-                <button type="button" class="btn btn-success add-location" data-bs-toggle="modal" data-bs-target="#addLocationModal">Add Location</button>
+                <button type="button" class="btn btn-success add-location-button" data-bs-toggle="modal" data-bs-target="#addLocationModal">Add Location</button>
             </div>
         </div>
 

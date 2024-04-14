@@ -18,7 +18,7 @@ if (empty($name) || empty($address) || empty($city) || empty($postalCode) || emp
 
 $sql = "INSERT INTO Location (location_name, address, city, postal_Code, state, phone) VALUES ('$name', '$address', '$city', $postalCode, '$state', '$phone')";
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    echo "Location added successfully";
 } else {
     http_response_code(400); // Bad request
     echo "Error\nStatus Code: 400\nError Message: $sql";
