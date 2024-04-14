@@ -52,27 +52,60 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Location</h1>
+                    <h1 class="modal-title fs-5">Add Location</h1>
                 </div>
                 <div class="modal-body">
                 <div class="mb-3">
                     <label class="form-label">Name</label>
-                    <input class="form-control location-name-input">
+                    <input class="form-control add-location-name-input">
                     <label class="form-label">Address</label>
-                    <input class="form-control location-address-input">
+                    <input class="form-control add-location-address-input">
                     <label class="form-label">City</label>
-                    <input class="form-control location-city-input">
+                    <input class="form-control add-location-city-input">
                     <label class="form-label">Postal Code</label>
-                    <input class="form-control location-postal-code-input">
+                    <input class="form-control add-location-postal-code-input">
                     <label class="form-label">State</label>
-                    <input class="form-control location-state-input">
+                    <input class="form-control add-location-state-input">
                     <label class="form-label">Phone</label>
-                    <input class="form-control location-phone-input">
+                    <input class="form-control add-location-phone-input">
                 </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary add-location-modal-button" data-bs-dismiss="modal">Add</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Update Location Modal -->
+        <div class="modal fade" id="updateLocationModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Update Location</h1>
+                </div>
+                <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input class="form-control update-location-name-input">
+                    <label class="form-label">Address</label>
+                    <input class="form-control update-location-address-input">
+                    <label class="form-label">City</label>
+                    <input class="form-control update-location-city-input">
+                    <label class="form-label">Postal Code</label>
+                    <input class="form-control update-location-postal-code-input">
+                    <label class="form-label">State</label>
+                    <input class="form-control update-location-state-input">
+                    <label class="form-label">Phone</label>
+                    <input class="form-control update-location-phone-input">
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary update-location-modal-button" data-bs-dismiss="modal">Update</button>
                 </div>
                 </div>
             </div>

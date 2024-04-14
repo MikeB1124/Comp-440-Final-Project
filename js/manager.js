@@ -41,6 +41,8 @@ function getMenu(locationId) {
                 let updateButton = document.createElement("button")
                 updateButton.setAttribute("type", "button")
                 updateButton.setAttribute("class", "btn btn-primary update-location-button")
+                updateButton.setAttribute("data-bs-toggle", "modal")
+                updateButton.setAttribute("data-bs-target", "#updateLocationModal")
                 updateButton.setAttribute("locationId", locationId)
                 updateButton.innerText = "Update Location"
     
@@ -53,11 +55,7 @@ function getMenu(locationId) {
                 let locationContainer = document.querySelector(".location-container")
                 locationContainer.appendChild(updateButton)
                 locationContainer.appendChild(removeButton)
-
-                updateButton.addEventListener('click', function(event){
-                    console.log(event.target.attributes.locationid.value)
-                })
-                
+            
                 removeButton.addEventListener('click', function(event){
                     removeLocation(event.target.attributes.locationid.value)
                 })
@@ -194,12 +192,12 @@ function insertItemsInTables(items){
 //Adding a new location
 let addLocationModalButton = document.querySelector(".add-location-modal-button")
 addLocationModalButton.addEventListener('click', function(){
-    let name = document.querySelector(".location-name-input").value
-    let address = document.querySelector(".location-address-input").value
-    let city = document.querySelector(".location-city-input").value
-    let postalCode = document.querySelector(".location-postal-code-input").value
-    let state = document.querySelector(".location-state-input").value
-    let phone = document.querySelector(".location-phone-input").value
+    let name = document.querySelector(".add-location-name-input").value
+    let address = document.querySelector(".add-location-address-input").value
+    let city = document.querySelector(".add-location-city-input").value
+    let postalCode = document.querySelector(".add-location-postal-code-input").value
+    let state = document.querySelector(".add-location-state-input").value
+    let phone = document.querySelector(".add-location-phone-input").value
 
     $.ajax({
         type: "POST",
@@ -238,4 +236,43 @@ function removeLocation(locationId){
             alert(response.responseText)
         }
     });
+}
+
+
+
+let updateLocationModalButton = document.querySelector(".update-location-modal-button")
+updateLocationModalButton.addEventListener('click', function(){
+    let name = document.querySelector(".update-location-name-input").value
+    let address = document.querySelector(".update-location-address-input").value
+    let city = document.querySelector(".update-location-city-input").value
+    let postalCode = document.querySelector(".update-location-postal-code-input").value
+    let state = document.querySelector(".update-location-state-input").value
+    let phone = document.querySelector(".update-location-phone-input").value
+    let locationId = getCurrentLocation()
+
+    $.ajax({
+        type: "POST",
+        url: `../sql/location/update_location.php`,
+        data: {
+            locationId: locationId,
+            name: name,
+            address: address,
+            city: city,
+            postalCode: postalCode,
+            state: state,
+            phone: phone
+        },
+        success: function(response){
+            alert(response)
+            location.reload()
+        },
+        error: function(response){
+            alert(response.responseText)
+        }
+    });
+})
+
+function getCurrentLocation(){
+    let updateLocationButton = document.querySelector(".update-location-button")
+    return updateLocationButton.attributes.locationid.value
 }
