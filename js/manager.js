@@ -37,6 +37,38 @@ function getMenu(locationId) {
                 }
             }
 
+            if(!document.querySelector(".update-location")){
+                let updateButton = document.createElement("button")
+                updateButton.setAttribute("type", "button")
+                updateButton.setAttribute("class", "btn btn-primary update-location")
+                updateButton.setAttribute("locationId", locationId)
+                updateButton.innerText = "Update Location"
+    
+                let removeButton = document.createElement("button")
+                removeButton.setAttribute("type", "button")
+                removeButton.setAttribute("class", "btn btn-danger remove-location")
+                removeButton.setAttribute("locationId", locationId)
+                removeButton.innerText = "Remove Location"
+
+                let locationContainer = document.querySelector(".location-container")
+                locationContainer.appendChild(updateButton)
+                locationContainer.appendChild(removeButton)
+
+                updateButton.addEventListener('click', function(event){
+                    console.log(event.target.attributes.locationid.value)
+                })
+                
+                removeButton.addEventListener('click', function(event){
+                    console.log(event.target.attributes.locationid.value)
+                    
+                })
+            }else{
+                let updateButton = document.querySelector(".update-location")
+                updateButton.setAttribute("locationId", locationId)
+                let removeButton = document.querySelector(".remove-location")
+                removeButton.setAttribute("locationId", locationId)
+            }
+
             if (menu){
                 getSections(menu["ID"])
             }
@@ -78,7 +110,16 @@ function getItems(sections){
 //Listen for location selection
 let selectMenu = document.querySelector(".select-location");
 selectMenu.addEventListener('click', function(event){
-    getMenu(event.target.id)
+    if(event.target.id != "0"){
+        getMenu(event.target.id)
+    }else{
+        if(document.querySelector(".update-location")){
+            let updateButton = document.querySelector(".update-location")
+            let removeButton = document.querySelector(".remove-location")
+            updateButton.remove()
+            removeButton.remove()
+        }
+    }
 })
 
 function createBaseTable(sections){
@@ -149,3 +190,33 @@ function insertItemsInTables(items){
         sectionTableBody.appendChild(tableDataRow)
     });
 }
+
+let addLocationModalButton = document.querySelector(".add-location-modal-button")
+addLocationModalButton.addEventListener('click', function(){
+    let name = document.querySelector(".location-name-input").value
+    let address = document.querySelector(".location-address-input").value
+    let city = document.querySelector(".location-city-input").value
+    let postalCode = document.querySelector(".location-postal-code-input").value
+    let state = document.querySelector(".location-state-input").value
+    let phone = document.querySelector(".location-phone-input").value
+
+    $.ajax({
+        type: "POST",
+        url: `../sql/location/add_location.php`,
+        data: {
+            name: name,
+            address: address,
+            city: city,
+            postalCode: postalCode,
+            state: state,
+            phone: phone
+        },
+        success: function(response){
+            alert(response)
+            location.reload()
+        },
+        error: function(response){
+            alert(response.responseText)
+        }
+    });
+})

@@ -32,14 +32,50 @@
         <!-- End of Nav Bar -->
 
         <div class="container text-center">
-            <div class="row mt-4">
+            <div class="row mt-4 location-container">
                 <select class="form-select select-location" multiple aria-label="Multiple select example">
-                    <option selected>Select Restaurant Location..</option>
+                    <option selected id="0">Select Restaurant Location..</option>
                 </select>
+                <button type="button" class="btn btn-success add-location" data-bs-toggle="modal" data-bs-target="#addLocationModal">Add Location</button>
             </div>
         </div>
 
         <div class="container text-center menu-container">
+        </div>
+
+
+
+
+
+        <!-- Add Location Modal -->
+        <div class="modal fade" id="addLocationModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Location</h1>
+                </div>
+                <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input class="form-control location-name-input">
+                    <label class="form-label">Address</label>
+                    <input class="form-control location-address-input">
+                    <label class="form-label">City</label>
+                    <input class="form-control location-city-input">
+                    <label class="form-label">Postal Code</label>
+                    <input class="form-control location-postal-code-input">
+                    <label class="form-label">State</label>
+                    <input class="form-control location-state-input">
+                    <label class="form-label">Phone</label>
+                    <input class="form-control location-phone-input">
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary add-location-modal-button" data-bs-dismiss="modal">Add</button>
+                </div>
+                </div>
+            </div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>

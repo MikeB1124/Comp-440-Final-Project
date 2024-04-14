@@ -11,8 +11,8 @@ INSERT INTO `Section` (`ID`, `Menu_ID`, `Section_Name`, `Description`) VALUES
 (1, 1, 'Burgers', 'Juicy burgers made with fresh ingredients'),
 (2, 1, 'Sides', 'Tasty side dishes to accompany your meal');
 
-INSERT INTO `Item` (`ID`, `Section_ID`, `Item_Name`, `Description`, `Price`) VALUES
-(1, 1, 'Classic Burger', 'Our classic beef burger with lettuce, tomato, and cheese', 5.99),
-(2, 1, 'Chicken Burger', 'Grilled chicken breast burger with mayo and lettuce', 6.99),
-(3, 2, 'French Fries', 'Crispy golden fries seasoned to perfection', 2.49),
-(4, 2, 'Onion Rings', 'Crunchy onion rings served with dipping sauce', 3.49);
+INSERT INTO `Item` (`ID`, `Section_ID`, `Item_Name`, `Description`, `Image_Url`, `Price`) VALUES
+(1, 1, 'Classic Burger', 'Our classic beef burger with lettuce, tomato, and cheese', 'www.example.com', 5.99),
+(2, 1, 'Chicken Burger', 'Grilled chicken breast burger with mayo and lettuce', 'www.example.com', 6.99),
+(3, 2, 'French Fries', 'Crispy golden fries seasoned to perfection', 'www.example.com', 2.49),
+(4, 2, 'Onion Rings', 'Crunchy onion rings served with dipping sauce', 'www.example.com', 3.49);
