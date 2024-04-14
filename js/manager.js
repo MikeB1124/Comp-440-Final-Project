@@ -32,7 +32,7 @@ function cleanUpPreviousLocation(locationId){
     if(!document.querySelector(".update-location-button")){
         let updateButton = document.createElement("button")
         updateButton.setAttribute("type", "button")
-        updateButton.setAttribute("class", "btn btn-primary update-location-button")
+        updateButton.setAttribute("class", "btn btn-secondary update-location-button")
         updateButton.setAttribute("data-bs-toggle", "modal")
         updateButton.setAttribute("data-bs-target", "#updateLocationModal")
         updateButton.setAttribute("locationId", locationId)
@@ -44,7 +44,7 @@ function cleanUpPreviousLocation(locationId){
         removeButton.setAttribute("locationId", locationId)
         removeButton.innerText = "Remove Location"
 
-        let locationContainer = document.querySelector(".location-container")
+        let locationContainer = document.querySelector(".location-button-container")
         locationContainer.appendChild(updateButton)
         locationContainer.appendChild(removeButton)
     

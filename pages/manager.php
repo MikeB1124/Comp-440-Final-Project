@@ -33,10 +33,12 @@
 
         <div class="container text-center">
             <div class="row mt-4 location-container">
+                <div class="btn-container location-button-container" style="display: flex; gap: 16px; padding: 0; margin-bottom: 8px;">
+                    <button type="button" class="btn btn-primary add-location-button" data-bs-toggle="modal" data-bs-target="#addLocationModal">Add Location</button>
+                </div>
                 <select class="form-select select-location" multiple aria-label="Multiple select example">
                     <option selected id="0">Select Restaurant Location..</option>
                 </select>
-                <button type="button" class="btn btn-success add-location-button" data-bs-toggle="modal" data-bs-target="#addLocationModal">Add Location</button>
             </div>
         </div>
 
