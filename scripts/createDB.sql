@@ -12,24 +12,13 @@ CREATE TABLE `Location` (
     PRIMARY KEY (`ID`)
 );
 
-CREATE TABLE `Menu` (
-    `ID` INT NOT NULL AUTO_INCREMENT,
-    `Location_ID` INT NOT NULL,
-    `Menu_Name` VARCHAR(20) NOT NULL,
-    `Description` VARCHAR(200) NOT NULL,
-    PRIMARY KEY (`ID`),
-    FOREIGN KEY (`LOCATION_ID`) REFERENCES `Location`(`ID`)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-);
-
 CREATE TABLE `Section` (
     `ID` INT NOT NULL AUTO_INCREMENT,
-    `Menu_ID` INT NOT NULL,
+    `Location_ID` INT NOT NULL,
     `Section_Name` VARCHAR(20) NOT NULL,
     `Description` VARCHAR(200) NOT NULL,
     PRIMARY KEY (`ID`),
-    FOREIGN KEY (`Menu_ID`) REFERENCES `Menu`(`ID`)
+    FOREIGN KEY (`LOCATION_ID`) REFERENCES `Location`(`ID`)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
@@ -46,4 +35,3 @@ CREATE TABLE `Item` (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
-

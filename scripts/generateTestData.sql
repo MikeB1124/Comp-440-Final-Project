@@ -4,10 +4,7 @@ INSERT INTO `Location` (`ID`, `Location_Name`, `Address`, `City`, `Postal_Code`,
 (1, 'Main Street', '123 Main St', 'Cityville', 12345, 'CA', '1234567890'),
 (2, 'Second Street', '123 Second St', 'Los Angeles', 12345, 'CA', '1234567890');
 
-INSERT INTO `Menu` (`ID`, `Location_ID`, `Menu_Name`, `Description`) VALUES
-(1, 1, 'Main Menu', 'Our delicious main menu options');
-
-INSERT INTO `Section` (`ID`, `Menu_ID`, `Section_Name`, `Description`) VALUES
+INSERT INTO `Section` (`ID`, `Location_ID`, `Section_Name`, `Description`) VALUES
 (1, 1, 'Burgers', 'Juicy burgers made with fresh ingredients'),
 (2, 1, 'Sides', 'Tasty side dishes to accompany your meal');
 

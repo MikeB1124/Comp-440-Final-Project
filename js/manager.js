@@ -6,7 +6,7 @@ function loadLocations() {
         success: function(response){
             let locations = JSON.parse(response)
 
-            var selectMenu = document.querySelector('.select-location');
+            var selectLocation = document.querySelector('.select-location');
             if (locations.length > 0){
                 locations.forEach(location => {
                     var option = document.createElement('option');
@@ -14,70 +14,56 @@ function loadLocations() {
                     option.setAttribute('value', location["Location_Name"])
                     option.setAttribute('id', location["ID"])
                     option.text = `${location["Location_Name"]} (${location["Address"]})`
-                    selectMenu.appendChild(option)
+                    selectLocation.appendChild(option)
                 });
             }
         }
     });
 }
 
-//Get Menu
-function getMenu(locationId) {
-    $.ajax({
-        type: "GET",
-        url: `../sql/menu/get_menu.php?locationId=${locationId}`,
-        success: function(response){
-            let data = JSON.parse(response);
-            let menu = data[0]
-
-            let menuAccordion = document.querySelector(".menu-container")
-            if (menuAccordion){
-                while(menuAccordion.firstChild){
-                    menuAccordion.removeChild(menuAccordion.firstChild)
-                }
-            }
-
-            if(!document.querySelector(".update-location-button")){
-                let updateButton = document.createElement("button")
-                updateButton.setAttribute("type", "button")
-                updateButton.setAttribute("class", "btn btn-primary update-location-button")
-                updateButton.setAttribute("data-bs-toggle", "modal")
-                updateButton.setAttribute("data-bs-target", "#updateLocationModal")
-                updateButton.setAttribute("locationId", locationId)
-                updateButton.innerText = "Update Location"
-    
-                let removeButton = document.createElement("button")
-                removeButton.setAttribute("type", "button")
-                removeButton.setAttribute("class", "btn btn-danger remove-location-button")
-                removeButton.setAttribute("locationId", locationId)
-                removeButton.innerText = "Remove Location"
-
-                let locationContainer = document.querySelector(".location-container")
-                locationContainer.appendChild(updateButton)
-                locationContainer.appendChild(removeButton)
-            
-                removeButton.addEventListener('click', function(event){
-                    removeLocation(event.target.attributes.locationid.value)
-                })
-            }else{
-                let updateButton = document.querySelector(".update-location-button")
-                updateButton.setAttribute("locationId", locationId)
-                let removeButton = document.querySelector(".remove-location-button")
-                removeButton.setAttribute("locationId", locationId)
-            }
-
-            if (menu){
-                getSections(menu["ID"])
-            }
+function cleanUpPreviousLocation(locationId){
+    let menuAccordion = document.querySelector(".menu-container")
+    if (menuAccordion){
+        while(menuAccordion.firstChild){
+            menuAccordion.removeChild(menuAccordion.firstChild)
         }
-    });
+    }
+
+    if(!document.querySelector(".update-location-button")){
+        let updateButton = document.createElement("button")
+        updateButton.setAttribute("type", "button")
+        updateButton.setAttribute("class", "btn btn-primary update-location-button")
+        updateButton.setAttribute("data-bs-toggle", "modal")
+        updateButton.setAttribute("data-bs-target", "#updateLocationModal")
+        updateButton.setAttribute("locationId", locationId)
+        updateButton.innerText = "Update Location"
+
+        let removeButton = document.createElement("button")
+        removeButton.setAttribute("type", "button")
+        removeButton.setAttribute("class", "btn btn-danger remove-location-button")
+        removeButton.setAttribute("locationId", locationId)
+        removeButton.innerText = "Remove Location"
+
+        let locationContainer = document.querySelector(".location-container")
+        locationContainer.appendChild(updateButton)
+        locationContainer.appendChild(removeButton)
+    
+        removeButton.addEventListener('click', function(event){
+            removeLocation(event.target.attributes.locationid.value)
+        })
+    }else{
+        let updateButton = document.querySelector(".update-location-button")
+        updateButton.setAttribute("locationId", locationId)
+        let removeButton = document.querySelector(".remove-location-button")
+        removeButton.setAttribute("locationId", locationId)
+    }
 }
 
 //Get Sections
-function getSections(menuId){
+function getSections(locationId){
     $.ajax({
         type: "GET",
-        url: `../sql/section/get_sections.php?menuId=${menuId}`,
+        url: `../sql/section/get_sections.php?locationId=${locationId}`,
         success: function(response){
             let sections = JSON.parse(response);
             if (sections.length > 0){
@@ -105,16 +91,23 @@ function getItems(sections){
 }
 
 //Listen for location selection
-let selectMenu = document.querySelector(".select-location");
-selectMenu.addEventListener('click', function(event){
+let selectLocation = document.querySelector(".select-location");
+selectLocation.addEventListener('click', function(event){
     if(event.target.id != "0"){
-        getMenu(event.target.id)
+        cleanUpPreviousLocation(event.target.id)
+        getSections(event.target.id)
     }else{
         if(document.querySelector(".update-location-button")){
             let updateButton = document.querySelector(".update-location-button")
             let removeButton = document.querySelector(".remove-location-button")
             updateButton.remove()
             removeButton.remove()
+        }
+        let menuAccordion = document.querySelector(".menu-container")
+        if (menuAccordion){
+            while(menuAccordion.firstChild){
+                menuAccordion.removeChild(menuAccordion.firstChild)
+            }
         }
     }
 })

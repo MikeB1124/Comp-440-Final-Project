@@ -1,9 +1,9 @@
 <?php
 require_once "../config.php";
 
-$menuId = $_GET['menuId'];
+$locationId = $_GET['locationId'];
 $sql = "SELECT * FROM section ";
-$sql .= "WHERE menu_id = $menuId";
+$sql .= "WHERE location_id = $locationId";
 $result = $conn->query($sql);
 $sections = array();
 
