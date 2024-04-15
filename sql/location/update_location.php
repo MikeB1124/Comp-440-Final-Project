@@ -16,22 +16,35 @@ if (empty($locationId)) {
     exit(); // Stop script execution
 }
 
-if (empty($name) || empty($address) || empty($city) || empty($postalCode) || empty($state) || empty($phone)) {
+if (empty($name) && empty($address) && empty($city) && empty($postalCode) && empty($state) && empty($phone)) {
     // Return an error response
     http_response_code(400); // Bad request
-    echo "Error\nStatus Code: 400\nError Message: One or more values are empty";
+    echo "Error\nStatus Code: 400\nError Message: At least one field must be updated.";
     exit(); // Stop script execution
 }
 
+$fieldsToUpdate = [];
+if (!empty($name)) {
+    $fieldsToUpdate[] = "location_name = '$name'";
+}
+if (!empty($address)) {
+    $fieldsToUpdate[] = "address = '$address'";
+}
+if (!empty($city)) {
+    $fieldsToUpdate[] = "city = '$city'";
+}
+if (!empty($postalCode)) {
+    $fieldsToUpdate[] = "postal_code = $postalCode";
+}
+if (!empty($state)) {
+    $fieldsToUpdate[] = "state = '$state'";
+}
+if (!empty($phone)) {
+    $fieldsToUpdate[] = "phone = '$phone'";
+}
+
 // $sql = "INSERT INTO Location (location_name, address, city, postal_Code, state, phone) VALUES ('$name', '$address', '$city', $postalCode, '$state', '$phone')";
-$sql = "UPDATE location SET
-        location_name = '$name',
-        address = '$address',
-        city = '$city',
-        postal_code = $postalCode,
-        state = '$state',
-        phone = '$phone'
-        WHERE id = $locationId";
+$sql = "UPDATE location SET " . implode(", ", $fieldsToUpdate) . " WHERE id = $locationId";
 if ($conn->query($sql) === TRUE) {
     echo "Location updated successfully";
 } else {
