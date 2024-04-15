@@ -126,6 +126,26 @@ selectLocation.addEventListener('click', function(event){
 function createBaseTable(sections){
     let menuContainer = document.querySelector(".menu-container")
     sections.forEach(section => {
+        let sectionActionContainer = document.createElement("div")
+        sectionActionContainer.style.display = "flex"
+        sectionActionContainer.style.justifyContent = "center"
+        sectionActionContainer.style.gap = "16px"
+        let updateSectionButton = document.createElement("button")
+        updateSectionButton.setAttribute("type", "button")
+        updateSectionButton.setAttribute("class", "btn btn-secondary update-section-button")
+        updateSectionButton.setAttribute("data-bs-toggle", "modal")
+        updateSectionButton.setAttribute("data-bs-target", "#updateSectionModal")
+        updateSectionButton.innerText = "Update Section"
+        let removeSectionButton = document.createElement("button")
+        removeSectionButton.setAttribute("type", "button")
+        removeSectionButton.setAttribute("class", "btn btn-danger remove-section-button")
+        removeSectionButton.innerText = "Remove Section"
+        removeSectionButton.addEventListener('click', function(){
+            removeSection(section)
+        })
+        sectionActionContainer.appendChild(updateSectionButton)
+        sectionActionContainer.appendChild(removeSectionButton)
+
         let sectionRow = document.createElement('div')
         sectionRow.setAttribute("class", `row mt-4 section-row-${section["ID"]}`)
 
@@ -162,6 +182,7 @@ function createBaseTable(sections){
         sectionTable.appendChild(tableHead)
         sectionTable.appendChild(tableBody)
 
+        sectionRow.appendChild(sectionActionContainer)
         sectionRow.appendChild(sectionTable)
         menuContainer.appendChild(sectionRow)
     });
@@ -305,3 +326,22 @@ addSectionModalButton.addEventListener('click', function(){
         }
     });
 })
+
+//Remove Section
+function removeSection(section){
+    $.ajax({
+        type: "POST",
+        url: `../sql/section/delete_section.php`,
+        data: {
+            sectionId: section["ID"],
+        },
+        success: function(response){
+            alert(response)
+            cleanUpPreviousLocation(section["Location_ID"])
+            getSections(section["Location_ID"])
+        },
+        error: function(response){
+            alert(response.responseText)
+        }
+    });
+}
