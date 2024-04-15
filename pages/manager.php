@@ -39,6 +39,8 @@
                 <select class="form-select select-location" multiple aria-label="Multiple select example">
                     <option selected id="0">Select Restaurant Location..</option>
                 </select>
+                <div class="btn-container add-section-button-container" style="display: flex; padding: 0; margin-top: 8px; justify-content: right;">
+                </div>
             </div>
         </div>
 
@@ -108,6 +110,28 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary update-location-modal-button" data-bs-dismiss="modal">Update</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="addSectionModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Add Section</h1>
+                </div>
+                <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Section Name</label>
+                    <input class="form-control add-section-name-input">
+                    <label class="form-label">Section Description</label>
+                    <input class="form-control add-section-description-input">
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary add-section-modal-button" data-bs-dismiss="modal">Add</button>
                 </div>
                 </div>
             </div>

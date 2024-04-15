@@ -51,6 +51,15 @@ function cleanUpPreviousLocation(locationId){
         removeButton.addEventListener('click', function(event){
             removeLocation(event.target.attributes.locationid.value)
         })
+
+        let addSectionButtonContainer = document.querySelector(".add-section-button-container")
+        let addSectionButton = document.createElement("button")
+        addSectionButton.setAttribute("type", "button")
+        addSectionButton.setAttribute("class", "btn btn-primary add-section-button")
+        addSectionButton.setAttribute("data-bs-toggle", "modal")
+        addSectionButton.setAttribute("data-bs-target", "#addSectionModal")
+        addSectionButton.innerText = "Add Section"
+        addSectionButtonContainer.appendChild(addSectionButton)
     }else{
         let updateButton = document.querySelector(".update-location-button")
         updateButton.setAttribute("locationId", locationId)
@@ -100,8 +109,10 @@ selectLocation.addEventListener('click', function(event){
         if(document.querySelector(".update-location-button")){
             let updateButton = document.querySelector(".update-location-button")
             let removeButton = document.querySelector(".remove-location-button")
+            let addSectionButton = document.querySelector(".add-section-button")
             updateButton.remove()
             removeButton.remove()
+            addSectionButton.remove()
         }
         let menuAccordion = document.querySelector(".menu-container")
         if (menuAccordion){
@@ -269,3 +280,28 @@ function getCurrentLocation(){
     let updateLocationButton = document.querySelector(".update-location-button")
     return updateLocationButton.attributes.locationid.value
 }
+
+//Add Section
+let addSectionModalButton = document.querySelector(".add-section-modal-button")
+addSectionModalButton.addEventListener('click', function(){
+    let locationId = getCurrentLocation()
+    let sectionName = document.querySelector(".add-section-name-input").value
+    let sectionDescription = document.querySelector(".add-section-description-input").value
+    $.ajax({
+        type: "POST",
+        url: `../sql/section/add_section.php`,
+        data: {
+            locationId: locationId,
+            sectionName: sectionName,
+            sectionDescription: sectionDescription
+        },
+        success: function(response){
+            alert(response)
+            cleanUpPreviousLocation(locationId)
+            getSections(locationId)
+        },
+        error: function(response){
+            alert(response.responseText)
+        }
+    });
+})
