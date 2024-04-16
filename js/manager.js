@@ -130,6 +130,7 @@ function createBaseTable(sections){
         sectionActionContainer.style.display = "flex"
         sectionActionContainer.style.justifyContent = "center"
         sectionActionContainer.style.gap = "16px"
+        sectionActionContainer.style.marginBottom = "32px"
         let updateSectionButton = document.createElement("button")
         updateSectionButton.setAttribute("type", "button")
         updateSectionButton.setAttribute("class", "btn btn-secondary update-section-button")
@@ -185,13 +186,18 @@ function createBaseTable(sections){
         tableColTwo.setAttribute("scope", "col")
         tableColTwo.innerText = "Price"
 
-        let tableColThird = document.createElement("th")
-        tableColThird.setAttribute("scope", "col")
-        tableColThird.innerText = "Actions"
+        let tableColThree = document.createElement("th")
+        tableColThree.setAttribute("scope", "col")
+        tableColThree.innerText = "Image Link"
+
+        let tableColFour = document.createElement("th")
+        tableColFour.setAttribute("scope", "col")
+        tableColFour.innerText = "Actions"
 
         tableHead.appendChild(tableColOne)
         tableHead.appendChild(tableColTwo)
-        tableHead.appendChild(tableColThird)
+        tableHead.appendChild(tableColThree)
+        tableHead.appendChild(tableColFour)
 
         let tableBody = document.createElement("tbody")
         tableBody.setAttribute("class", `table-body-section-${section["ID"]}`)
@@ -229,6 +235,7 @@ function insertItemsInTables(items){
         let itemActions = document.createElement("td")
         itemActions.style.display = "flex"
         itemActions.style.gap = "8px"
+        itemActions.style.justifyContent = "center"
         let updateItemButton = document.createElement("button")
         updateItemButton.setAttribute("type", "button")
         updateItemButton.setAttribute("class", "btn btn-secondary update-item-button")
