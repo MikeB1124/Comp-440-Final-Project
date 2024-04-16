@@ -31,20 +31,8 @@
         </nav>
         <!-- End of Nav Bar -->
 
-        <div class="container text-center">
-            <div class="row mt-4">
-                <div class="col">
-                    <button type="button" id="CreateDB" class="btn btn-primary">Create 'Test' DB</button>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col">
-                    <button type="button" id="DeleteDB" class="btn btn-primary">Delete 'Test' DB</button>
-                </div>
-            </div>
-        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-        <script src="js/test.js"></script>
+        <script src="../js/menu.js"></script>
     </body>
 </html>
