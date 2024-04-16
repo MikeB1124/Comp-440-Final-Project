@@ -207,11 +207,34 @@ function insertItemsInTables(items){
         let itemPrice = document.createElement("td")
         itemPrice.innerText = `$${item["Price"]}`
 
+        let itemImageUrl = document.createElement("td")
+        let imageUrlAnchorTag = document.createElement("a")
+        imageUrlAnchorTag.href = item["Image_Url"]
+        imageUrlAnchorTag.target = "_blank"
+        imageUrlAnchorTag.innerText = item["Image_Url"]
+        itemImageUrl.appendChild(imageUrlAnchorTag)
+
         let itemActions = document.createElement("td")
-        itemActions.innerText = "Comming Soon"
+        itemActions.style.display = "flex"
+        itemActions.style.gap = "8px"
+        let updateItemButton = document.createElement("button")
+        updateItemButton.setAttribute("type", "button")
+        updateItemButton.setAttribute("class", "btn btn-secondary update-item-button")
+        updateItemButton.innerText = "Update"
+        let removeItemButton = document.createElement("button")
+        removeItemButton.setAttribute("type", "button")
+        removeItemButton.setAttribute("class", "btn btn-danger remove-item-button")
+        removeItemButton.setAttribute("itemid", item["ID"])
+        removeItemButton.innerText = "Remove"
+        removeItemButton.addEventListener('click', function(event){
+            removeItem(event.target.attributes.itemid.value)
+        })
+        itemActions.appendChild(updateItemButton)
+        itemActions.appendChild(removeItemButton)
 
         tableDataRow.appendChild(itemName)
         tableDataRow.appendChild(itemPrice)
+        tableDataRow.appendChild(itemImageUrl)
         tableDataRow.appendChild(itemActions)
 
         sectionTableBody.appendChild(tableDataRow)
@@ -376,3 +399,23 @@ updateSectionModalButton.addEventListener('click', function(event){
         }
     });
 })
+
+//Remove Item
+function removeItem(itemId){
+    let locationId = getCurrentLocation()
+    $.ajax({
+        type: "POST",
+        url: `../sql/item/delete_item.php`,
+        data: {
+            itemId: itemId,
+        },
+        success: function(response){
+            alert(response)
+            cleanUpPreviousLocation(locationId)
+            getSections(locationId)
+        },
+        error: function(response){
+            alert(response.responseText)
+        }
+    });
+}
