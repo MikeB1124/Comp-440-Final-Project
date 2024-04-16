@@ -137,6 +137,28 @@
             </div>
         </div>
 
+        <div class="modal fade" id="updateSectionModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Update Section</h1>
+                </div>
+                <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Section Name</label>
+                    <input class="form-control update-section-name-input">
+                    <label class="form-label">Section Description</label>
+                    <input class="form-control update-section-description-input">
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary update-section-modal-button" data-bs-dismiss="modal">Update</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
         <script src="../js/manager.js"></script>
         <script>loadLocations()</script>

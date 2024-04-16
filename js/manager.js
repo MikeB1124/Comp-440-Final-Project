@@ -136,6 +136,11 @@ function createBaseTable(sections){
         updateSectionButton.setAttribute("data-bs-toggle", "modal")
         updateSectionButton.setAttribute("data-bs-target", "#updateSectionModal")
         updateSectionButton.innerText = "Update Section"
+        updateSectionButton.addEventListener('click', function(){
+            let updateSectionModalButton = document.querySelector(".update-section-modal-button")
+            updateSectionModalButton.setAttribute("sectionid", section["ID"])
+            updateSectionModalButton.setAttribute("locationid", section["Location_ID"])
+        })
         let removeSectionButton = document.createElement("button")
         removeSectionButton.setAttribute("type", "button")
         removeSectionButton.setAttribute("class", "btn btn-danger remove-section-button")
@@ -345,3 +350,29 @@ function removeSection(section){
         }
     });
 }
+
+//Update Section
+let updateSectionModalButton = document.querySelector(".update-section-modal-button")
+updateSectionModalButton.addEventListener('click', function(event){
+    let locationId = event.target.attributes.locationid.value
+    let sectionId = event.target.attributes.sectionid.value
+    let sectionName = document.querySelector(".update-section-name-input").value
+    let sectionDescription = document.querySelector(".update-section-description-input").value
+    $.ajax({
+        type: "POST",
+        url: `../sql/section/update_section.php`,
+        data: {
+            sectionId: sectionId,
+            sectionName: sectionName,
+            sectionDescription: sectionDescription
+        },
+        success: function(response){
+            alert(response)
+            cleanUpPreviousLocation(locationId)
+            getSections(locationId)
+        },
+        error: function(response){
+            alert(response.responseText)
+        }
+    });
+})
