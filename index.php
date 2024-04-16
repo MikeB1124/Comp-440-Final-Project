@@ -27,12 +27,21 @@
                     </li>
                 </ul>
                 </div>
+                <div style="display: flex; justify-content: right;">
+                    <select class="form-select select-menu-location">
+                        <option selected value="0">Select Location</option>
+                    </select>
+                </div>
             </div>
         </nav>
         <!-- End of Nav Bar -->
 
+        <div class="container text-center menu-container">
+            <h1>Please select a location to display a menu.</h1>
+        </div>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-        <script src="../js/menu.js"></script>
+        <script src="js/menu.js"></script>
+        <script>loadLocations()</script>
     </body>
 </html>
