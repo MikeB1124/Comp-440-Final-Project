@@ -27,7 +27,6 @@ if (!empty($sectionDescription)) {
     $fieldsToUpdate[] = "description = '$sectionDescription'";
 }
 
-// $sql = "INSERT INTO Location (location_name, address, city, postal_Code, state, phone) VALUES ('$name', '$address', '$city', $postalCode, '$state', '$phone')";
 $sql = "UPDATE section SET " . implode(", ", $fieldsToUpdate) . " WHERE id = $sectionId";
 if ($conn->query($sql) === TRUE) {
     echo "Section updated successfully";

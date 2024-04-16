@@ -26,7 +26,7 @@ CREATE TABLE `Section` (
 CREATE TABLE `Item` (
     `ID` INT NOT NULL AUTO_INCREMENT,
     `Section_ID` INT NOT NULL,
-    `Item_Name` VARCHAR(20) NOT NULL,
+    `Item_Name` VARCHAR(40) NOT NULL,
     `Description` VARCHAR(200) NOT NULL,
     `Image_Url` VARCHAR(400) NOT NULL,
     `Price` DECIMAL(6,2) NOT NULL,

@@ -220,7 +220,13 @@ function insertItemsInTables(items){
         let updateItemButton = document.createElement("button")
         updateItemButton.setAttribute("type", "button")
         updateItemButton.setAttribute("class", "btn btn-secondary update-item-button")
+        updateItemButton.setAttribute("data-bs-toggle", "modal")
+        updateItemButton.setAttribute("data-bs-target", "#updateItemModal")
         updateItemButton.innerText = "Update"
+        updateItemButton.addEventListener('click', function(){
+            let updateItemModalButton = document.querySelector(".update-item-modal-button")
+            updateItemModalButton.setAttribute("itemid", item["ID"])
+        })
         let removeItemButton = document.createElement("button")
         removeItemButton.setAttribute("type", "button")
         removeItemButton.setAttribute("class", "btn btn-danger remove-item-button")
@@ -419,3 +425,33 @@ function removeItem(itemId){
         }
     });
 }
+
+//Update Item
+let udpateItemModalButton = document.querySelector(".update-item-modal-button")
+udpateItemModalButton.addEventListener('click', function(event){
+    let itemId = event.target.attributes.itemid.value
+    let locationId = getCurrentLocation()
+    let itemName = document.querySelector(".update-item-name-input").value
+    let itemDescription = document.querySelector(".update-item-description-input").value
+    let itemImageUrl = document.querySelector(".update-item-image-input").value
+    let itemPrice = document.querySelector(".update-item-price-input").value
+    $.ajax({
+        type: "POST",
+        url: `../sql/item/update_item.php`,
+        data: {
+            itemId: itemId,
+            itemName: itemName,
+            itemDescription: itemDescription,
+            itemImageUrl: itemImageUrl,
+            itemPrice: itemPrice
+        },
+        success: function(response){
+            alert(response)
+            cleanUpPreviousLocation(locationId)
+            getSections(locationId)
+        },
+        error: function(response){
+            alert(response.responseText)
+        }
+    });
+})

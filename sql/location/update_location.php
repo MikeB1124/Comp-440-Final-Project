@@ -43,7 +43,6 @@ if (!empty($phone)) {
     $fieldsToUpdate[] = "phone = '$phone'";
 }
 
-// $sql = "INSERT INTO Location (location_name, address, city, postal_Code, state, phone) VALUES ('$name', '$address', '$city', $postalCode, '$state', '$phone')";
 $sql = "UPDATE location SET " . implode(", ", $fieldsToUpdate) . " WHERE id = $locationId";
 if ($conn->query($sql) === TRUE) {
     echo "Location updated successfully";

@@ -159,6 +159,32 @@
             </div>
         </div>
 
+
+        <div class="modal fade" id="updateItemModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Update Item</h1>
+                </div>
+                <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Item Name</label>
+                    <input class="form-control update-item-name-input">
+                    <label class="form-label">Item Description</label>
+                    <input class="form-control update-item-description-input">
+                    <label class="form-label">Image Url</label>
+                    <input class="form-control update-item-image-input">
+                    <label class="form-label">Price</label>
+                    <input class="form-control update-item-price-input">
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary update-item-modal-button" data-bs-dismiss="modal">Update</button>
+                </div>
+                </div>
+            </div>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
         <script src="../js/manager.js"></script>
         <script>loadLocations()</script>
