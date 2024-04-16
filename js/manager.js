@@ -148,6 +148,18 @@ function createBaseTable(sections){
         removeSectionButton.addEventListener('click', function(){
             removeSection(section)
         })
+        let addItemButton = document.createElement("button")
+        addItemButton.setAttribute("type", "button")
+        addItemButton.setAttribute("class", "btn btn-primary add-item-button")
+        addItemButton.setAttribute("data-bs-toggle", "modal")
+        addItemButton.setAttribute("data-bs-target", "#addItemModal")
+        addItemButton.innerText = "Add Item"
+        addItemButton.addEventListener('click', function(){
+            let addItemModalButton = document.querySelector(".add-item-modal-button")
+            addItemModalButton.setAttribute("sectionid", section["ID"])
+        })
+
+        sectionActionContainer.appendChild(addItemButton)
         sectionActionContainer.appendChild(updateSectionButton)
         sectionActionContainer.appendChild(removeSectionButton)
 
@@ -440,6 +452,36 @@ udpateItemModalButton.addEventListener('click', function(event){
         url: `../sql/item/update_item.php`,
         data: {
             itemId: itemId,
+            itemName: itemName,
+            itemDescription: itemDescription,
+            itemImageUrl: itemImageUrl,
+            itemPrice: itemPrice
+        },
+        success: function(response){
+            alert(response)
+            cleanUpPreviousLocation(locationId)
+            getSections(locationId)
+        },
+        error: function(response){
+            alert(response.responseText)
+        }
+    });
+})
+
+let addItemModalButton = document.querySelector(".add-item-modal-button")
+addItemModalButton.addEventListener('click', function(event){
+    let locationId = getCurrentLocation()
+    let sectionId = event.target.attributes.sectionid.value
+    let itemName = document.querySelector(".add-item-name-input").value
+    let itemDescription = document.querySelector(".add-item-description-input").value
+    let itemImageUrl = document.querySelector(".add-item-image-input").value
+    let itemPrice = document.querySelector(".add-item-price-input").value
+
+    $.ajax({
+        type: "POST",
+        url: `../sql/item/add_item.php`,
+        data: {
+            sectionId: sectionId,
             itemName: itemName,
             itemDescription: itemDescription,
             itemImageUrl: itemImageUrl,
