@@ -2,7 +2,7 @@
 function loadLocations() {
     $.ajax({
         type: "GET",
-        url: "../sql/location/get_locations.php",
+        url: "../controllers/location/get_locations.php",
         success: function(response){
             let locations = JSON.parse(response)
 
@@ -72,7 +72,7 @@ function cleanUpPreviousLocation(locationId){
 function getSections(locationId){
     $.ajax({
         type: "GET",
-        url: `../sql/section/get_sections.php?locationId=${locationId}`,
+        url: `../controllers/section/get_sections.php?locationId=${locationId}`,
         success: function(response){
             let sections = JSON.parse(response);
             if (sections.length > 0){
@@ -88,7 +88,7 @@ function getItems(sections){
     sections.forEach(section => {
         $.ajax({
             type: "GET",
-            url: `../sql/item/get_items.php?sectionId=${section["ID"]}`,
+            url: `../controllers/item/get_items.php?sectionId=${section["ID"]}`,
             success: function(response){
                 let items = JSON.parse(response);
                 if (items.length > 0){
@@ -279,7 +279,7 @@ addLocationModalButton.addEventListener('click', function(){
 
     $.ajax({
         type: "POST",
-        url: `../sql/location/add_location.php`,
+        url: `../controllers/location/add_location.php`,
         data: {
             name: name,
             address: address,
@@ -302,7 +302,7 @@ addLocationModalButton.addEventListener('click', function(){
 function removeLocation(locationId){
     $.ajax({
         type: "POST",
-        url: `../sql/location/delete_loaction.php`,
+        url: `../controllers/location/delete_loaction.php`,
         data: {
             locationId: locationId,
         },
@@ -330,7 +330,7 @@ updateLocationModalButton.addEventListener('click', function(){
 
     $.ajax({
         type: "POST",
-        url: `../sql/location/update_location.php`,
+        url: `../controllers/location/update_location.php`,
         data: {
             locationId: locationId,
             name: name,
@@ -363,7 +363,7 @@ addSectionModalButton.addEventListener('click', function(){
     let sectionDescription = document.querySelector(".add-section-description-input").value
     $.ajax({
         type: "POST",
-        url: `../sql/section/add_section.php`,
+        url: `../controllers/section/add_section.php`,
         data: {
             locationId: locationId,
             sectionName: sectionName,
@@ -384,7 +384,7 @@ addSectionModalButton.addEventListener('click', function(){
 function removeSection(section){
     $.ajax({
         type: "POST",
-        url: `../sql/section/delete_section.php`,
+        url: `../controllers/section/delete_section.php`,
         data: {
             sectionId: section["ID"],
         },
@@ -408,7 +408,7 @@ updateSectionModalButton.addEventListener('click', function(event){
     let sectionDescription = document.querySelector(".update-section-description-input").value
     $.ajax({
         type: "POST",
-        url: `../sql/section/update_section.php`,
+        url: `../controllers/section/update_section.php`,
         data: {
             sectionId: sectionId,
             sectionName: sectionName,
@@ -430,7 +430,7 @@ function removeItem(itemId){
     let locationId = getCurrentLocation()
     $.ajax({
         type: "POST",
-        url: `../sql/item/delete_item.php`,
+        url: `../controllers/item/delete_item.php`,
         data: {
             itemId: itemId,
         },
@@ -456,7 +456,7 @@ udpateItemModalButton.addEventListener('click', function(event){
     let itemPrice = document.querySelector(".update-item-price-input").value
     $.ajax({
         type: "POST",
-        url: `../sql/item/update_item.php`,
+        url: `../controllers/item/update_item.php`,
         data: {
             itemId: itemId,
             itemName: itemName,
@@ -486,7 +486,7 @@ addItemModalButton.addEventListener('click', function(event){
 
     $.ajax({
         type: "POST",
-        url: `../sql/item/add_item.php`,
+        url: `../controllers/item/add_item.php`,
         data: {
             sectionId: sectionId,
             itemName: itemName,
