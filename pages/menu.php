@@ -30,6 +30,67 @@
             </div>
         </nav>
         <!-- End of Nav Bar -->
+
+
+
+        <div class="container text-center menu-container">
+            <!-- <h1>Please select a location to display a menu.</h1> -->
+            <h1>Main Street</h1>
+            <h2>30476 Passageway Pl, Agoura Hills CA 91301</h2>
+            <h2>8186895373</h2>
+            <div class="col">
+                <h1>Burgers</h1>
+                <div class="list-cards" style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
+                    <div class="card" style="width: 250px; height: 500x;">
+                        <img src="https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Classic Burger ($10.99)</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 250px; height: 500x;">
+                        <img src="https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 250px; height: 500x;">
+                        <img src="https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 250px; height: 500x;">
+                        <img src="https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 250px; height: 500x;">
+                        <img src="https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <h1>Salads</h1>
+                <div class="list-cards" style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
+                    <div class="card" style="width: 250px; height: 500x;">
+                        <img src="https://www.shutterstock.com/image-photo/classic-hamburger-stock-photo-isolated-600nw-2282033179.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
         <script src="../js/menu.js"></script>
     </body>
