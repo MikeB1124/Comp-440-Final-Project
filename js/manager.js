@@ -188,7 +188,7 @@ function createBaseTable(sections){
 
         let tableColThree = document.createElement("th")
         tableColThree.setAttribute("scope", "col")
-        tableColThree.innerText = "Image Link"
+        tableColThree.src = "Image Link"
 
         let tableColFour = document.createElement("th")
         tableColFour.setAttribute("scope", "col")
@@ -229,7 +229,7 @@ function insertItemsInTables(items){
         let imageUrlAnchorTag = document.createElement("a")
         imageUrlAnchorTag.href = item["Image_Url"]
         imageUrlAnchorTag.target = "_blank"
-        imageUrlAnchorTag.innerText = item["Image_Url"]
+        imageUrlAnchorTag.innerText = item["Image_Url"].split('.com')[0] + '.com'
         itemImageUrl.appendChild(imageUrlAnchorTag)
 
         let itemActions = document.createElement("td")

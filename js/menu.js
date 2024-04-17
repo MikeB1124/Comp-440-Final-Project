@@ -140,6 +140,8 @@ function insertItems(items){
         let img = document.createElement("img")
         img.setAttribute("class", "card-img-top")
         img.src = item["Image_Url"]
+        img.style.width = "250px"
+        img.style.height = "150px"
 
         cardContainer.appendChild(img)
 
