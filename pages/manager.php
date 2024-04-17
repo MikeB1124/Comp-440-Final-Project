@@ -20,9 +20,6 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="menu.php">Menu</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" href="manager.php">Manager</a>
                     </li>
                 </ul>
