@@ -9,7 +9,8 @@ CREATE TABLE `Location` (
     `Postal_Code` INT,
     `State` VARCHAR(2) NOT NULL,
     `Phone` VARCHAR(10) NOT NULL,
-    PRIMARY KEY (`ID`)
+    PRIMARY KEY (`ID`),
+    UNIQUE (`Location_Name`)
 );
 
 CREATE TABLE `Section` (
