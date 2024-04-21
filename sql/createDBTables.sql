@@ -36,3 +36,8 @@ CREATE TABLE `Item` (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+CREATE INDEX index_location_name ON Location(Location_Name);
+CREATE INDEX index_section_name ON Section(Section_Name);
+CREATE INDEX index_item_name ON Item(Item_Name);
+CREATE INDEX index_item_price ON Item(Price);
